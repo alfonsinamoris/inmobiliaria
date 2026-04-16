@@ -1,12 +1,28 @@
-<body>
-<div th:replace="~{layout/navbar :: header}"></div>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>InmoSwift - Home</title>
+        <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+        <style>
+            body { font-family: 'Roboto', sans-serif; background-color: #f8f9fa; }
+            .hero-section { 
+                background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1350&q=80'); 
+                background-size: cover; color: white; padding: 100px 0; text-align: center; 
+            }
+        </style>
+    </head>
+    <body>
+        <div th:replace="~{layout/navbar :: header}"></div>
 
-<header class="hero-section text-center py-5 bg-primary text-white">
-    <h1>Bienvenido a Imobiliaria Lucrecia Moreno</h1>
-    <p>Tu inmobiliaria de confianza en Tandil.</p>
-</header>
+        <header class="hero-section text-center py-5 bg-primary text-white">
+            <h1>Bienvenido a Imobiliaria Lucrecia Moreno</h1>
+            <p>Tu inmobiliaria de confianza en Tandil.</p>
+        </header>
 
-<footer>
-    <div th:replace="~{layout/footer :: footer}"></div>
-</footer>
-</body>
+        <footer>
+            <div th:replace="~{layout/footer :: footer}"></div>
+        </footer>
+    </body>
+</html>

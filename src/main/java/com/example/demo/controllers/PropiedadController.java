@@ -36,7 +36,7 @@ public String mostrarContacto() {
 }
 
 // Ruta por defecto (si entran a /publica que vaya al home)
-@GetMapping("/publica")
+@GetMapping("/")
 public String index() {
     return "redirect:/publica/home";
 }
