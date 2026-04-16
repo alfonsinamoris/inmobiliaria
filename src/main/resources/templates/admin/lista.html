@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Propiedades</title>
+</head>
+<body>
+    <h1>Propiedades Cargadas</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Precio</th>
+                <th>Descripción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="p : ${propiedades}">
+                <td th:text="${p.titulo}"></td>
+                <td th:text="${p.precio}"></td>
+                <td th:text="${p.descripcion}"></td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <a href="/propiedades/nuevo">Cargar otra propiedad</a>
+</body>
+</html>
