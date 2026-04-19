@@ -1,3 +1,75 @@
-<footer class="bg-dark text-white text-center py-4 mt-5">
-    <p>&copy; 2026 InmoSwift Argentina - Proyecto Web Arquitectura</p>
+<footer th:fragment="footer" class="bg-dark text-white pt-5 pb-4">
+    <style>
+       
+       .footer-column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 15px; /* Espacio entre íconos sin usar márgenes manuales */
+    }
+
+    .fb { height: 45px; width: auto; }
+    .inst { height: 50px; width: auto; }
+
+    .footer-logo {
+        height: 120px; /* Bajé un poco el tamaño para que no desplace tanto */
+        width: auto;
+        margin-bottom: 10px;
+    }
+
+    #contacto, #seguinos {
+        color: white !important;
+        margin-top: 10px;
+    }
+
+    /* Quitamos cualquier alineación a la izquierda que traiga Bootstrap */
+    .row {
+        justify-content: center;
+    }
+
+        
+
+    </style>
+
+
+
+<div class="container py-4">
+    <hr class="mt-4 mb-4">
+
+    <div class="row">
+        
+        <div class="col-md-4 footer-column mt-3">
+            <img th:src="@{/img/logo.png}" alt="Inmo Logo" class="footer-logo">
+        </div>
+
+        <div class="col-md-4 footer-column mt-3">
+            <h5 class="text-uppercase mb-4 font-weight-bold" id="contacto">Contacto</h5>
+            <p><i class="bi bi-geo-alt-fill me-2"></i> San Martin 226, Tandil</p>
+            <p><i class="bi bi-envelope-fill me-2"></i> lucreciamorenoinmobiliaria@gmail.com</p>
+            <p><i class="bi bi-telephone-fill me-2"></i> +54 249 4607249</p>
+        </div>
+
+        <div class="col-md-4 footer-column mt-3">
+            <h5 class="text-uppercase mb-4 font-weight-bold" id="seguinos">Seguinos</h5>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/lucrecia_moreno_inmobiliaria/" target="_blank">
+                    <img th:src="@{/img/instagram.png}" alt="Instagram" class="inst">
+                </a>
+                <a href="#" target="_blank">
+                    <img th:src="@{/img/facebook.png}" alt="Facebook" class="fb">
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <hr class="mt-4 mb-4">
+</div>
+
 </footer>

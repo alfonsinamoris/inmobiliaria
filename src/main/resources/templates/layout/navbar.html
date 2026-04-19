@@ -1,8 +1,39 @@
 <nav th:fragment="header" class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow">
+    <style>
+        /* 1. Fijamos la altura del Navbar para que no se mueva */
+        .navbar {
+            height: 80px; 
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        /* 2. El contenedor del logo relativo para que la imagen flote adentro */
+        .navbar-brand {
+            position: relative;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        /* 3. El Logo: ahora podés subir el height y no estirará el navbar */
+        .navbar-brand img {
+            height: 150px; /* <--- Ajustá este valor a tu gusto (ej: 100px, 120px) */
+            width: auto;
+            position: absolute;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+
+        /* 4. El Texto del Logo: le damos margen para que no lo tape la imagen */
+        .navbar-brand span {
+            margin-left: 120px; /* <--- Ajustá este margen según el ancho de tu logo */
+        }
+    </style>
+
     <div class="container">
         <a class="navbar-brand d-flex align-items-center" href="/publica/home">
-            <img th:src="@{/img/logoInmo.png}" alt="Logo Inmobiliaria" width="40" height="40" class="d-inline-block align-text-top me-2">
-            <span class="fw-bold">Lucrecia Moreno Inmobiliaria</span>
+            <img th:src="@{/img/logocompleto.png}" alt="Logo" class="me-2">
         </a>
         
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -10,20 +41,12 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/publica/home">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/publica/propiedades">Propiedades</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/publica/contacto">Contacto</a>
-                </li>
-                <li class="nav-item ms-lg-3">
-                    <a class="btn btn-outline-info btn-sm" href="/admin/dashboard">Admin</a>
-                </li>
-            </ul>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="/publica/home">Home</a>
+                <a class="nav-link" href="/publica/propiedades">Propiedades</a>
+                <a class="nav-link" href="/publica/contacto">Contacto</a>
+                <a class="nav-link " href="/admin/dashboard">Admin</a>
+            </div>
         </div>
     </div>
 </nav>
