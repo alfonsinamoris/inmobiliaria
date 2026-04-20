@@ -19,19 +19,26 @@ public class webSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-        .authorizeHttpRequests((requests) -> requests
-        .requestMatchers("/", "/publica/**", "/css/**", "/img/**").permitAll() // 1. Permitir lo público
-        .requestMatchers("/admin/**").hasRole("ADMIN")                         // 2. Proteger lo privado
-        .anyRequest().authenticated()                                          // 3. Todo lo demás requiere login
-    )
+            .authorizeHttpRequests((requests) -> requests
+                .requestMatchers(
+                    "/", "/login", "/logout",
+                    "/publica/**",
+                    "/css/**", "/img/**",
+                    "/static/**"
+                ).permitAll()                                  // 1. Rutas públicas y recursos estáticos
+                .requestMatchers("/admin/**").hasRole("ADMIN") // 2. Solo ADMIN puede entrar al panel
+                .anyRequest().authenticated()                  // 3. Todo lo demás requiere login
+            )
             .formLogin((form) -> form
-                .loginPage("/login") // Tu página personalizada
-                .defaultSuccessUrl("/admin/dashboard", true) // A donde va tras loguearse
+                .loginPage("/login")                           // Página de login personalizada
+                .loginProcessingUrl("/login")                  // Spring intercepta el POST acá
+                .defaultSuccessUrl("/admin/dashboard", true)   // Redirige tras login exitoso
+                .failureUrl("/login?error")                    // Redirige si falla el login
                 .permitAll()
             )
             .logout((logout) -> logout
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/") // Tras salir va al home público
+                .logoutSuccessUrl("/login")                         // Tras salir va al home público
                 .permitAll()
             );
 
